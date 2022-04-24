@@ -1,0 +1,15 @@
+---
+# & or § for colors
+# \n for newline
+
+# Title Form
+TitleForm: "AdvancedRules"
+
+# Rules
+Rules: "§8» §rAdvancedRules by NhanAZ.\n§8» §rEdit the §6config.yml §rFile and restart server."
+
+AgreeButon: "I agree"
+
+# Confirming Message
+AgreedMessage: "[§2ServerName§f]§8»§aYou accepted the rules, have fun!"
+...

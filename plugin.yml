@@ -1,0 +1,10 @@
+---
+name: AdvancedRules
+version: 1.0.0
+main: NhanAZ\AdvancedRules\Main
+api: 4.0.0
+src-namespace-prefix: NhanAZ\AdvancedRules
+author: NhanAZ
+website: https://github.com/NhanAZ
+description: "Get players who join your server for the first time to accept the server rules with AdvancedRules."
+...
