@@ -11,9 +11,9 @@ use pocketmine\utils\TextFormat;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\player\PlayerJoinEvent;
 use dktapps\pmforms\CustomForm;
-use dktapps\pmforms\element\Label;
-use dktapps\pmforms\element\Toggle;
-use dktapps\pmforms\CustomFormResponse;
+use NhanAZ\AdvancedRules\libs\dktapps\pmforms\element\Label;
+use NhanAZ\AdvancedRules\libs\dktapps\pmforms\element\Toggle;
+use NhanAZ\AdvancedRules\libs\dktapps\pmforms\CustomFormResponse;
 
 class Main extends PluginBase implements Listener {
 
