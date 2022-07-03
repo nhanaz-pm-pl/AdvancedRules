@@ -32,7 +32,7 @@ class Main extends PluginBase implements Listener {
 		if (!$this->data->exists($player->getName())) {
 			if ($this->getConfig()->get("KickMode", true)) {
 				if ($kickMode) {
-					$player->kick(TextFormat::colorize($this->getConfig()->get("KickMessage", "§e» §cPlease agree to the server's rules!")));
+					$player->kick(TextFormat::colorize($this->getConfig()->get("KickMessage", "&e» &cPlease agree to the server's rules!")));
 				}
 			}
 			$player->sendForm($this->AdvancedRulesForm());
@@ -48,14 +48,14 @@ class Main extends PluginBase implements Listener {
 		return new CustomForm(
 			TextFormat::colorize($this->cfg->get("TitleForm", "AdvancedRules")),
 			[
-				new Label("content", TextFormat::colorize($this->cfg->get("Rules", "§8» §rAdvancedRules by NhanAZ.\n§8» §rEdit the §6config.yml §rFile and restart server."))),
+				new Label("content", TextFormat::colorize($this->cfg->get("Rules", "&8» &rAdvancedRules by NhanAZ.\n&8» &rEdit the &6config.yml &rFile and restart server."))),
 				new Toggle("switch", TextFormat::colorize($this->cfg->get("AgreeButon", "I agree")), false)
 			],
 			function (Player $submitter, CustomFormResponse $response): void {
 				if ($response->getBool("switch")) {
 					$this->data->set($submitter->getName(), true);
 					$this->data->save();
-					$submitter->sendMessage(TextFormat::colorize($this->cfg->get("AgreedMessage", "[§2ServerName§f]§8»§aYou accepted the rules, have fun!")));
+					$submitter->sendMessage(TextFormat::colorize($this->cfg->get("AgreedMessage", "[&2ServerName&f]&8»&aYou accepted the rules, have fun!")));
 				}
 				$this->CheckData($submitter, true);
 			},
