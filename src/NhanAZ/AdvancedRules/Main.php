@@ -28,15 +28,20 @@ class Main extends PluginBase implements Listener {
 		$this->cfg = $this->getConfig();
 	}
 
-	private function CheckData(Player $player): void {
+	private function CheckData(Player $player, bool $kickMode = true): void {
 		if (!$this->data->exists($player->getName())) {
+			if ($this->getConfig()->get("KickMode", true)) {
+				if ($kickMode) {
+					$player->kick(TextFormat::colorize($this->getConfig()->get("KickMessage", "§e» §cPlease agree to the server's rules!")));
+				}
+			}
 			$player->sendForm($this->AdvancedRulesForm());
 		}
 	}
 
 	public function onJoin(PlayerJoinEvent $event): void {
 		$player = $event->getPlayer();
-		$this->CheckData($player);
+		$this->CheckData($player, false);
 	}
 
 	private function AdvancedRulesForm(): CustomForm {
@@ -52,10 +57,10 @@ class Main extends PluginBase implements Listener {
 					$this->data->save();
 					$submitter->sendMessage(TextFormat::colorize($this->cfg->get("AgreedMessage", "[§2ServerName§f]§8»§aYou accepted the rules, have fun!")));
 				}
-				$this->CheckData($submitter);
+				$this->CheckData($submitter, true);
 			},
 			function (Player $submitter): void {
-				$this->CheckData($submitter);
+				$this->CheckData($submitter, false);
 			}
 		);
 	}

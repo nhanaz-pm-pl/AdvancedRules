@@ -6,11 +6,17 @@
 TitleForm: "AdvancedRules"
 
 # Rules
-Rules: "§8» §rAdvancedRules by NhanAZ.\n§8» §rEdit the §6config.yml §rFile and restart server."
+Rules: "§8» §rAdvancedRules by NhanAZ.\n§8» §rEdit rules in §6config.yml §rfile and restart server."
 
 # Agree Buton
 AgreeButon: "I agree"
 
 # Confirming Message
 AgreedMessage: "[§2ServerName§f]§8»§aYou accepted the rules, have fun!"
+
+# Kick players from the server if they don't agree with the rules
+KickMode: true
+
+# Messages sent to players when they disagree with the rules
+KickMessage: "§e» §cPlease agree to the server's rules!"
 ...
