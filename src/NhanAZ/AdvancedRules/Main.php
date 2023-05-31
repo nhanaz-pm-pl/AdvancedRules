@@ -13,19 +13,21 @@ use dktapps\pmforms\CustomForm;
 use dktapps\pmforms\element\Label;
 use dktapps\pmforms\element\Toggle;
 use dktapps\pmforms\CustomFormResponse;
+use Symfony\Component\Filesystem\Path;
 
 class Main extends PluginBase implements Listener {
-
-	protected Config $data;
 
 	protected function onEnable(): void {
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		$this->saveDefaultConfig();
-		$this->data = new Config($this->getDataFolder() . "Data.json", Config::JSON);
+		$path = Path::join($this->getDataFolder(), "data/");
+		if (!is_dir($path)) {
+			mkdir($path);
+		}
 	}
 
 	private function checkData(Player $player, bool $kickMode = true): void {
-		if (!$this->data->exists($player->getName())) {
+		if (!file_exists($this->getDataFolder() . "data/" . $player->getName())) {
 			if ($this->getConfig()->get("KickMode", true)) {
 				if ($kickMode) {
 					$player->kick($this->getConfig()->get("KickMessage"));
@@ -49,8 +51,7 @@ class Main extends PluginBase implements Listener {
 			],
 			function (Player $submitter, CustomFormResponse $response): void {
 				if ($response->getBool("switch")) {
-					$this->data->set($submitter->getName(), true);
-					$this->data->save();
+					file_put_contents($this->getDataFolder() . "data/" . $submitter->getName(), "");
 					$submitter->sendMessage($this->getConfig()->get("AgreedMessage"));
 				}
 				$this->checkData($submitter, true);
