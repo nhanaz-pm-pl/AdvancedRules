@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace NhanAZ\AdvancedRules;
 
-use pocketmine\utils\Config;
 use pocketmine\player\Player;
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
@@ -38,8 +37,7 @@ class Main extends PluginBase implements Listener {
 	}
 
 	public function onJoin(PlayerJoinEvent $event): void {
-		$player = $event->getPlayer();
-		$this->checkData($player, false);
+		$this->checkData($event->getPlayer(), false);
 	}
 
 	private function advancedRulesForm(): CustomForm {
