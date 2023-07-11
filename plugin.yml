@@ -1,6 +1,6 @@
 ---
 name: AdvancedRules
-version: 1.0.2
+version: 1.1.2
 main: NhanAZ\AdvancedRules\Main
 api: 5.0.0
 
